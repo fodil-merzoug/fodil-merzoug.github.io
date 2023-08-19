@@ -166,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     else if(["el naama","elnaama"].includes(result)) result = "naama";
     else if(["ain tmouchent","ain timouchent","temouchent","tmouchent","timouchent"].includes(result)) result = "ain temouchent";
     else if(["rilizane","ghelizane","ghilizane"].includes(result)) result = "relizane";
+    else if(["borj baji mokhtar"].includes(result)) result = "bordj badji mokhtar";
     else if(["ouled djelal","wled djellal","wled djelal"].includes(result)) result = "ouled djellal";
     else if(["beniabbes","beniabes","beni abes","bni abbes","bni abes"].includes(result)) result = "beni abbes";
     else if(["ain salah"].includes(result)) result = "in salah";
