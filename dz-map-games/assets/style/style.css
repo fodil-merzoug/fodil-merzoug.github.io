@@ -1,0 +1,30 @@
+/* Map style */
+#map { 
+    height: 720px;
+    width: 100%; 
+}
+
+/* Main div style */
+#div_main { 
+    margin:0.2em;
+    visibility: hidden;
+}
+
+/* Right column style */
+.right-column { 
+    font-size: 0.8em;
+}
+
+/* Timer spinner style */
+#spn_timer{
+    color: #f23a07;
+    font-weight: bold;
+    font-size:130%;
+}
+
+/* Wilayas input style */
+#input_wilayas{
+    width:200px;
+    margin-left:1em;
+    margin-right:1em;
+}
