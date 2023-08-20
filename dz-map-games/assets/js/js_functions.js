@@ -231,7 +231,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
       end_game_message += "<br><br>&#x231A Votre temps = "+displayFormattedTime(time_spent);
     }
     
-    Swal.fire('Partie terminée', end_game_message, 'info');
+    Swal.fire({
+      title: 'Partie terminée',
+      html: end_game_message,      
+    });
   }
   //-------------------------------------------------
 
