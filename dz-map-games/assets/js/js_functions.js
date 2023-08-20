@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function showUnfoundWilayas(){
-    console.log(liste_wilayas);
+    console.log("showUnfoundWilayas",liste_wilayas);
     liste_wilayas.forEach((element, index) => {
       if (element !== "") {
         num_wilaya = index;
