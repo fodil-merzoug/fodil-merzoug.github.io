@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   let nbr_wilayas = liste_wilayas.length-1;
   
-  let game_time = 10; //5:00
+  let game_time = 20; //5:00
   var remaining_time = game_time;
   var spn_timer = document.getElementById("spn_timer");
 
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function drawWilayaBorders(id_wilaya,nom_wilaya,unfound=false){
     var WilayaBordersStyle = {"color": "#3388FF"};
-    if(unfound) WilayaBordersStyle = {"color": "#a3342c"};
+    if(unfound) WilayaBordersStyle = {"color": "#a3342c","weight": 1.5,};
     var wilayaBorders = L.geoJSON(geoJSON_wilayas[id_wilaya],{style: WilayaBordersStyle}).addTo(map);
     var wilayaPopup = L.popup({offset: [0, 0]}).setContent(nom_wilaya);
     //Initialiser le popup à sa création (Afficher puis masquer), pour pouvoir l'activer on mouseover plus tard
@@ -247,7 +247,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.log(liste_wilayas);
     liste_wilayas.forEach((element, index) => {
       if (element !== "") {
-        drawWilayaBorders(index,liste_wilayas_display[index],true);
+        num_wilaya = index;
+        nom_wilaya = liste_wilayas_display[num_wilaya];
+        drawWilayaBorders(num_wilaya,nom_wilaya,true);
+        td_element = document.getElementById("td"+num_wilaya);
+        td_element.classList.add("unfound-wilaya");
+        td_element.innerHTML = nom_wilaya;
       }
     });
   }
