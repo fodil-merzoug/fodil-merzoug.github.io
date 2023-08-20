@@ -225,10 +225,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     clearInterval(comptearebours);
     input_wilayas.remove();
 
-    end_game_message = "Votre score = "+nbr_wilayas_trouves+"/"+nbr_wilayas;
+    end_game_message = "&#x1F3AF Votre score = "+nbr_wilayas_trouves+"/"+nbr_wilayas;
     if(remaining_time>0) {
       time_spent = game_time - remaining_time;
-      end_game_message += "<br>Votre temps = "+displayFormattedTime(time_spent);
+      end_game_message += "<br><br>&#x231A Votre temps = "+displayFormattedTime(time_spent);
     }
     
     Swal.fire('Partie terminée', end_game_message, 'info');
