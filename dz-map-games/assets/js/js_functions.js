@@ -118,16 +118,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //Display div_main
     document.getElementById('div_main').style.visibility = "visible";
     
-    //Stop the loading message
-    //Swal.close();
-
     //Draw Algeria borders
     drawAlgeriaBorders();
 
+    //Start game message
     Swal.fire({
       title: 'Nouvelle partie',
-      html: 'Il y a 58 wilayas (villes) en Algérie. Essayer d\'en nommer le maximum en 5 minutes chrono !<br>&#x1F4A1; À chaque fois qu\'une wilaya est trouvée, elle apparait sur la carte et son nom est affiché dans la liste.',
-      confirmButtonText: 'Commencer',
+      html: 'Il y a 58 wilayas (villes) en Algérie. Essayez d\'en nommer le maximum en 5 minutes chrono !<br><br>&#x1F4A1; À chaque fois qu\'une wilaya est trouvée, elle apparait sur la carte et son nom est affiché dans la liste.',
+      confirmButtonText: 'Commencer le jeu',
       allowOutsideClick: false,
       allowEscapeKey: false,
     }).then((result) => {
@@ -210,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
 
-  function displayRemainingTime(s){
+  function displayFormattedTime(s){
     let mn = parseInt(s/60);
     let sc = s%60;
     if(sc<10) sc = "0"+sc;
@@ -219,14 +217,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function updateTimer() {
       remaining_time--;
-      spn_timer.innerHTML = displayRemainingTime(remaining_time);
+      spn_timer.innerHTML = displayFormattedTime(remaining_time);
       if(remaining_time==0) endGame();
   }
 
   function endGame(){
     clearInterval(comptearebours);
     input_wilayas.remove();
-    Swal.fire('Partie terminée', 'Votre score : '+nbr_wilayas_trouves+'/'+nbr_wilayas, 'info');
+
+    end_game_message = "Votre score = "+nbr_wilayas_trouves+"/"+nbr_wilayas;
+    if(remaining_time>0) {
+      time_spent = game_time - remaining_time;
+      end_game_message += "<br>Votre temps = "+displayFormattedTime(time_spent);
+    }
+    
+    Swal.fire('Partie terminée', end_game_message, 'info');
   }
   //-------------------------------------------------
 
