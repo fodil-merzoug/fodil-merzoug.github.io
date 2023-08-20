@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       geoJSON_wilayas[i] = JSON.parse(data);
       loading_level = parseInt(100*i/nbr_wilayas);
       if(i<nbr_wilayas) init_geoJSON_coordinates_wilayas(i+1);
-      else startGame(); //End of loading
+      else startGameReady(); //End of loading
     })
   }
 
@@ -114,16 +114,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
     wilayaBorders.on('mouseout', function(){map.closePopup()});
   }
 
-  function startGame(){
+  function startGameReady(){
     //Display div_main
     document.getElementById('div_main').style.visibility = "visible";
     
     //Stop the loading message
-    Swal.close();
+    //Swal.close();
 
     //Draw Algeria borders
     drawAlgeriaBorders();
 
+    Swal.fire({
+      title: 'Nouvelle partie',
+      html: 'Il y a 58 wilayas (villes) en Algérie. Essayer d\'en nommer le maximum en 5 minutes chrono !<br>&#x1F4A1; À chaque fois qu\'une wilaya est trouvée, elle apparait sur la carte et son nom est affiché dans la liste.',
+      confirmButtonText: 'Commencer',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+    }).then((result) => {
+      startGame();
+    });
+    
+  }
+
+  function startGame(){
     //Init span nbr_wilayas_trouves 
     spn_nbr_wilayas_trouves.innerHTML = nbr_wilayas_trouves+" / "+nbr_wilayas;
   
