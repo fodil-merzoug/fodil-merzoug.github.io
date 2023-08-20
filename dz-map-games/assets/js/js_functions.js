@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var loading_level = 0;
   Swal.fire({
     title: 'Chargement',
-    html: 'Veuillez patienter pendant le Chargement (<b></b>)',
+    html: 'Veuillez patienter pendant le Chargement du jeu <br><b></b>',
     
     allowOutsideClick: false,
     allowEscapeKey: false,
