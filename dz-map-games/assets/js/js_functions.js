@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   let nbr_wilayas = liste_wilayas.length-1;
   
-  let game_time = 30; //5:00
+  let game_time = 300; //5:00
   var remaining_time = game_time;
   var spn_timer = document.getElementById("spn_timer");
 
