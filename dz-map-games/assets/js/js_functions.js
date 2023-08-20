@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   let nbr_wilayas = liste_wilayas.length-1;
   
-  let game_time = 20; //5:00
+  let game_time = 30; //5:00
   var remaining_time = game_time;
   var spn_timer = document.getElementById("spn_timer");
 
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           td_element = document.getElementById("td"+num_wilaya);
           td_element.classList.add("found-wilaya");
           td_element.innerHTML = nom_wilaya;
-          
+
           liste_wilayas[num_wilaya] = "";
           drawWilayaBorders(num_wilaya,nom_wilaya);
           nbr_wilayas_trouves++;
