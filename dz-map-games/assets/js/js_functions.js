@@ -198,7 +198,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
       if(liste_wilayas.includes(valueToCheck)){
           num_wilaya = liste_wilayas.indexOf(valueToCheck);
           nom_wilaya = liste_wilayas_display[num_wilaya];
-          document.getElementById("td"+num_wilaya).innerHTML = nom_wilaya;
+
+          td_element = document.getElementById("td"+num_wilaya);
+          td_element.classList.add("found-wilaya");
+          td_element.innerHTML = nom_wilaya;
+          
           liste_wilayas[num_wilaya] = "";
           drawWilayaBorders(num_wilaya,nom_wilaya);
           nbr_wilayas_trouves++;

@@ -29,7 +29,14 @@
     margin-right:1em;
 }
 
+/* Found wilaya style */
+.found-wilaya{
+    color:#3388FF;
+    font-weight:650;
+}
+
 /* Unfound wilaya style */
 .unfound-wilaya{
     color:#a3342c;
+    font-weight:520;
 }
