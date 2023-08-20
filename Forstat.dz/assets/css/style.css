@@ -1,0 +1,37 @@
+.navbar-logo-img { 
+    height: 3rem
+}
+
+.header-overlay{
+    opacity: 0.4; 
+    background-color: rgb(255, 255, 255);
+}
+
+.introduction-overlay{
+    opacity: 0.9; 
+    background-color: rgb(255, 255, 255);
+}
+
+#team2-7{
+    background-image: linear-gradient(to bottom right, #477191, #DEDEDE);
+}
+
+#team2-7 .titre-section{
+    text-align: center;
+    padding:1em; 
+    font-size:38px;
+    color:white; 
+    font-weight:bold;
+}
+
+.lottie-parent{
+    padding-left:30px;
+}
+
+.contact-card{
+    background-image: linear-gradient(to bottom right, #EEEEEE, #FBFBFB);
+}
+
+.span-footer{
+    font-size: 1.1rem;
+}
