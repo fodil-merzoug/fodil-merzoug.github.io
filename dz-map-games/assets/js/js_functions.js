@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   let nbr_wilayas = liste_wilayas.length-1;
   
-  let game_time = 300; //5:00
+  let game_time = 10; //5:00
   var remaining_time = game_time;
   var spn_timer = document.getElementById("spn_timer");
 
@@ -224,17 +224,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function endGame(){
     clearInterval(comptearebours);
     input_wilayas.remove();
+    spn_timer.remove();
 
     end_game_message = "&#x1F3AF Votre score = "+nbr_wilayas_trouves+"/"+nbr_wilayas;
     if(remaining_time>0) {
       time_spent = game_time - remaining_time;
       end_game_message += "<br><br>&#x231A Votre temps = "+displayFormattedTime(time_spent);
     }
+    else if(nbr_wilayas_trouves<nbr_wilayas){
+      showUnfoundWilayas();
+    }
     
     Swal.fire({
       title: 'Partie terminée',
       html: end_game_message,      
     });
+  }
+
+  function showUnfoundWilayas(){
+    console.log(liste_wilayas);
   }
   //-------------------------------------------------
 
