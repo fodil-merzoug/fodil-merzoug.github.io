@@ -1,42 +1,32 @@
-/* Map style */
-#map { 
-    height: 720px;
-    width: 100%; 
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0;
 }
 
-/* Main div style */
-#div_main { 
-    margin:0.2em;
-    visibility: hidden;
+.container {
+    text-align: center;
 }
 
-/* Right column style */
-.right-column { 
-    font-size: 0.8em;
+.text-title{
+    font-family: 'Josefin Sans', sans-serif;
 }
 
-/* Timer spinner style */
-#spn_timer{
-    color: #f23a07;
+.text-language-choice{
+    font-family: 'Almarai', sans-serif;
+    margin-bottom: 0.8em;
+}
+
+.language-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-title {
     font-weight: bold;
-    font-size:130%;
-}
-
-/* Wilayas input style */
-#input_wilayas{
-    width:200px;
-    margin-left:1em;
-    margin-right:1em;
-}
-
-/* Found wilaya style */
-.found-wilaya{
-    color:#3388FF;
-    font-weight:650;
-}
-
-/* Unfound wilaya style */
-.unfound-wilaya{
-    color:#a3342c;
-    font-weight:520;
 }
