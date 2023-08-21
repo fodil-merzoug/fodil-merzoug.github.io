@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   //--------------------- Functions -----------------
   function init_geoJSON_coordinates_Algeria(){
-    fetch('./assets/json/geoJSON_coordinates/Algeria.geojson')
+    fetch('../assets/json/geoJSON_coordinates/Algeria.geojson')
     .then(response => response.text())
     .then((data) => {
       geoJSON_Algeria = JSON.parse(data);
@@ -82,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function drawAlgeriaBorders(){
     var AlgeriaBordersStyle = {
-      //"color": "#333333",
       "weight": 3.5,
       "fillColor": "#ffffff",
       "fillOpacity": 0.1,
@@ -93,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function init_geoJSON_coordinates_wilayas(i=1){
     if(i<10) wilaya = "0"+i;
     else     wilaya = ""+i;
-    fetch('./assets/json/geoJSON_coordinates/'+wilaya+'.geojson')
+    fetch('../assets/json/geoJSON_coordinates/'+wilaya+'.geojson')
     .then(response => response.text())
     .then((data) => {
       geoJSON_wilayas[i] = JSON.parse(data);
@@ -104,16 +103,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function drawWilayaBorders(id_wilaya,nom_wilaya,unfound=false){
-    var WilayaBordersStyle = {"color": "#3388FF"};
-    if(unfound) WilayaBordersStyle = {"color": "#a3342c","weight": 1.5,};
+    var WilayaBordersStyle = {"color": "#3388FF","weight": 1.2,};
+    if(unfound) WilayaBordersStyle = {"color": "#a3342c","weight": 1.0,};
     var wilayaBorders = L.geoJSON(geoJSON_wilayas[id_wilaya],{style: WilayaBordersStyle}).addTo(map);
-    var wilayaPopup = L.popup({offset: [0, 0]}).setContent(nom_wilaya);
+    
     //Initialiser le popup à sa création (Afficher puis masquer), pour pouvoir l'activer on mouseover plus tard
+    var wilayaPopup = L.popup({offset: [0, 0]}).setContent(nom_wilaya);
     wilayaBorders.bindPopup(wilayaPopup).openPopup();
     map.closePopup()
-    //Popup events
-    wilayaBorders.on('mouseover', function(){/*console.log(nom_wilaya);*/map.openPopup(wilayaPopup)});
+
+    //Popup events on map
+    wilayaBorders.on('mouseover', function(){map.openPopup(wilayaPopup)});
     wilayaBorders.on('mouseout', function(){map.closePopup()});
+
+    //Popup events on list
+    td_element = document.getElementById("td"+id_wilaya);          
+    td_element.onmouseover = function(){map.openPopup(wilayaPopup)};
+    td_element.onmouseout = function(){map.closePopup()};
   }
 
   function startGameReady(){
@@ -153,33 +159,33 @@ document.addEventListener("DOMContentLoaded", function(event) {
     result = result.trim();
     
     //Handle wilaya names variants
-    if(["elaghouat","el aghouat","laghouet"].includes(result)) result = "laghouat";
-    else if(["oum elbouaghi","oum el bouaki","oum elbouaki","oum el bouaqi","oum elbouaqi"].includes(result)) result = "oum el bouaghi";
+    if(["elaghouat","el aghouat","elaghouet","el aghouet","laghouet"].includes(result)) result = "laghouat";
+    else if(["oum elbouaghi","oum el bouaki","oum elbouaki","oum el bouaqi","oum elbouaqi","oum bouaghi","oum bouaki","oum bouaqi"].includes(result)) result = "oum el bouaghi";
     else if(["tamenrasset"].includes(result)) result = "tamanrasset";
-    else if(["tbessa"].includes(result)) result = "tebessa";
+    else if(["tbessa","تبسة"].includes(result)) result = "tebessa";
     else if(["telemcen"].includes(result)) result = "tlemcen";
     else if(["tiziouzou","tizi-ouzou"].includes(result)) result = "tizi ouzou";
     else if(["jazair","eljazair","el jazair","djazair","eldjazair","el djazair"].includes(result)) result = "alger";
     else if(["jelfa"].includes(result)) result = "djelfa";
-    else if(["belabbes","bel abbes","sidi belabbes"].includes(result)) result = "sidi bel abbes";
+    else if(["belabbes","bel abbes","belabes","bel abes","sidi belabbes","sidi belabes","sidi bel abes"].includes(result)) result = "sidi bel abbes";
     else if(["galma"].includes(result)) result = "guelma";
     else if(["msila"].includes(result)) result = "m'sila";
-    else if(["ouergla"].includes(result)) result = "ouargla";
+    else if(["ouergla","wargla","wergla"].includes(result)) result = "ouargla";
     else if(["wahran","wahren"].includes(result)) result = "oran";
     else if(["elbayadh","bayadh","el bayedh","elbayedh","bayedh"].includes(result)) result = "el bayadh";
     else if(["ilizi"].includes(result)) result = "illizi";
-    else if(["bba","elbordj","el bordj","bordj bouarreridj","bordj bouareridj","bordj bouarriridj","bordj bouariridj","bordj bou arriridj","bordj bou ariridj"].includes(result)) result = "bordj bou arreridj";
+    else if(["bba","elborj","elbordj","el borj","el bordj","bordj bouarreridj","bordj bouareridj","bordj bouarriridj","bordj bouariridj","bordj bou arriridj","bordj bou ariridj"].includes(result)) result = "bordj bou arreridj";
     else if(["eltarf","el taraf","eltaraf","el taref","eltaref","tarf","taref","taraf"].includes(result)) result = "el tarf";
     else if(["tissemsilet","tissemssilt","tissemssilet"].includes(result)) result = "tissemsilt";
-    else if(["eloued","oued souf"].includes(result)) result = "el oued";
-    else if(["khenchla"].includes(result)) result = "khenchela";
+    else if(["eloued","oued souf","ouedsouf"].includes(result)) result = "el oued";
+    else if(["khenchla","khanchla"].includes(result)) result = "khenchela";
     else if(["soukahras","souq ahras","souqahras"].includes(result)) result = "souk ahras";
     else if(["tibaza"].includes(result)) result = "tipaza";
     else if(["ain eldefla","ain el defla","aindefla"].includes(result)) result = "ain defla";
     else if(["el naama","elnaama"].includes(result)) result = "naama";
     else if(["ain tmouchent","ain timouchent","temouchent","tmouchent","timouchent"].includes(result)) result = "ain temouchent";
-    else if(["rilizane","ghelizane","ghilizane"].includes(result)) result = "relizane";
-    else if(["borj baji mokhtar"].includes(result)) result = "bordj badji mokhtar";
+    else if(["rilizane","rilizene","relizene","ghelizane","ghilizane","ghelizene","ghilizene"].includes(result)) result = "relizane";
+    else if(["borj baji mokhtar","bordj baji mokhtar","borj badji mokhtar"].includes(result)) result = "bordj badji mokhtar";
     else if(["ouled djelal","wled djellal","wled djelal"].includes(result)) result = "ouled djellal";
     else if(["beniabbes","beniabes","beni abes","bni abbes","bni abes"].includes(result)) result = "beni abbes";
     else if(["ain salah"].includes(result)) result = "in salah";
