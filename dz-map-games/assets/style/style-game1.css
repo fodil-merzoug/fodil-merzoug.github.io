@@ -29,6 +29,10 @@
     margin-right:1em;
 }
 
+#spn_liste_wilayas{
+    font-weight: bold;
+}
+
 /* Found wilaya style */
 .found-wilaya{
     color:#3388FF;

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DZ Map Games</title>
-    <link rel="icon" type="image/x-icon" href="../assets/images/algeria_map_icon.png">
+    <link rel="icon" type="image/x-icon" href="./assets/images/algeria_map_icon.png">
 
     <!--Bootstrap CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
@@ -17,8 +17,7 @@
      crossorigin=""/>
 
      <!-- Page Style -->
-     <link rel="stylesheet" href="../assets/style/style-game1.css">
-    
+     <link rel="stylesheet" href="./assets/style/style-game1.css">
   </head>
   <body>
     
@@ -29,26 +28,26 @@
         </div>
         <div class="col-5 right-column">
           <center>
-            <h3>Saisissez le nom d'une wilaya</h3>
+            <h4 id="h4_saisir_wilaya"></h4>
             <span id="spn_timer"></span>
-            <input id="input_wilayas" type="text" placeholder="Saisir une wilaya">
+            <input id="input_wilayas" type="text">
             <span id="spn_nbr_wilayas_trouves"></span>
             <br><br>
           
-            <b>Wilayas trouvées</b>
+            <span id="spn_liste_wilayas"></span>
           </center>
           <br>
           <table class="table">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Wilaya</th>
+                <th scope="col" class="th-wilaya"></th>
                 <th scope="col">#</th>
-                <th scope="col">Wilaya</th>
+                <th scope="col" class="th-wilaya"></th>
                 <th scope="col">#</th>
-                <th scope="col">Wilaya</th>
+                <th scope="col" class="th-wilaya"></th>
                 <th scope="col">#</th>
-                <th scope="col">Wilaya</th>
+                <th scope="col" class="th-wilaya"></th>
               </tr>
             </thead>
             <tbody>
@@ -220,7 +219,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- My JS script-->
-    <script src="../assets/js/js_functions.js"></script>
+    <script src="./assets/js/js_functions.js"></script>
 
   </body>
 </html>
