@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }).addTo(map1);
   
   //Map2 (medium & small screen)
-  var map2 = L.map('map2',{zoomSnap: 0.35});
+  var map2 = L.map('map2',{zoomSnap: 0.3});
   map2.fitBounds([
     //[38.75, -9.38],[20, 13.15]
     [37.302414, -9.38],[18.81, 13.15]
