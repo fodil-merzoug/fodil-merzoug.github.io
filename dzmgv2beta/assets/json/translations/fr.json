@@ -1,0 +1,17 @@
+{
+    "titre_toast_chargement": "Chargement",
+    "txt_toast_chargement": "Veuillez patienter pendant le Chargement du jeu<br><b></b>",
+    "titre_toast_accueil": "Nouvelle partie",
+    "txt_toast_accueil": "Il y a 58 wilayas (villes) en Algérie. Essayez d'en nommer le maximum en 5 minutes chrono !<br><br>&#x1F4A1; À chaque fois qu'une wilaya est trouvée, elle apparait sur la carte et son nom est affiché dans la liste.",
+    "btn_toast_accueil": "Commencer le jeu",
+    "txt_saisir_wilaya": "Saisissez le nom d'une wilaya",
+    "hint_input_wilaya": "Saisir une wilaya",
+    "titre_liste_wilayas": "Wilayas trouvées",
+    "txt_tableau_wilayas": "Wilaya",
+    "liste_wilayas_display": ["","Adrar","Chlef","Laghouat","Oum El Bouaghi","Batna","Béjaïa","Biskra","Béchar","Blida","Bouira","Tamanrasset","Tébessa","Tlemcen","Tiaret","Tizi Ouzou","Alger","Djelfa","Jijel","Sétif","Saïda","Skikda","Sidi Bel Abbès","Annaba","Guelma","Constantine","Médéa","Mostaganem","M'Sila","Mascara","Ouargla","Oran","El Bayadh","Illizi","Bordj Bou Arreridj","Boumerdès","El Tarf","Tindouf","Tissemsilt","El Oued","Khenchela","Souk Ahras","Tipaza","Mila","Aïn Defla","Naâma","Aïn Témouchent","Ghardaïa","Relizane","Timimoun","Bordj Badji Mokhtar","Ouled Djellal","Béni Abbès","In Salah","In Guezzam","Touggourt","Djanet","El M'Ghair","El Meniaa"],
+    "liste_wilayas": ["","adrar","chlef","laghouat","oum el bouaghi","batna","bejaia","biskra","bechar","blida","bouira","tamanrasset","tebessa","tlemcen","tiaret","tizi ouzou","alger","djelfa","jijel","setif","saida","skikda","sidi bel abbes","annaba","guelma","constantine","medea","mostaganem","m'sila","mascara","ouargla","oran","el bayadh","illizi","bordj bou arreridj","boumerdes","el tarf","tindouf","tissemsilt","el oued","khenchela","souk ahras","tipaza","mila","ain defla","naama","ain temouchent","ghardaia","relizane","timimoun","bordj badji mokhtar","ouled djellal","beni abbes","in salah","in guezzam","touggourt","djanet","el m'ghair","el meniaa"],
+    "titre_toast_fin": "Partie terminée",
+    "score_toast_fin": "Votre score = ",
+    "temps_toast_fin": "Votre temps = ",
+    "btn_toast_fin": "OK"
+}
