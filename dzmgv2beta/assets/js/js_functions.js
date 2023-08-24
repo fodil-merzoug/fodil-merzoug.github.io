@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }).addTo(map1);
   
   //Map2 (medium & small screen)
-  var map2 = L.map('map2',{zoomSnap: 0.3});
+  var map2 = L.map('map2',{zoomSnap: 0.35});
   map2.fitBounds([
     //[38.75, -9.38],[20, 13.15]
     [37.302414, -9.38],[18.81, 13.15]
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    minZoom: 5,
+    minZoom: 4,
     maxZoom: 6,
   }).addTo(map2);
 
