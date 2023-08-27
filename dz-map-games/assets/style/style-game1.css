@@ -4,10 +4,31 @@
     width: 100%; 
 }
 
+#map2 { 
+    height: 570px;
+    width: 100%; 
+}
+
 /* Main div style */
 #div_main { 
     margin:0.2em;
     visibility: hidden;
+}
+
+.responsive-div{
+    display: none; /* Hide all items by default */
+}
+
+@media (min-width: 1024px) {
+    #div1{
+        display: flex;
+    }
+}
+
+@media (max-width: 1024px) {
+    #div2{
+        display: block;
+    }
 }
 
 /* Right column style */
@@ -16,21 +37,29 @@
 }
 
 /* Timer spinner style */
-#spn_timer{
+.textview-timer{
     color: #f23a07;
     font-weight: bold;
     font-size:130%;
 }
 
 /* Wilayas input style */
-#input_wilayas{
+.input-wilayas{
     width:200px;
     margin-left:1em;
     margin-right:1em;
 }
 
-#spn_liste_wilayas{
+.textview-liste-wilayas{
     font-weight: bold;
+}
+
+.div-replay .btn {
+    margin:1em;
+}
+
+.btn-show-wilayas{
+    margin-top: 1rem;
 }
 
 /* Found wilaya style */

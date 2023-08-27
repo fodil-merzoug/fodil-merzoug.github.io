@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-
+  screen_width = window.innerWidth;
+  (screen_width>=1024) ? mode_affichage = 0 : mode_affichage = 1;
+    
   //initialize DOM elements
   initDomElements();
 
@@ -12,38 +14,51 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   initTranslation(language);
 
-  //--------------------- Loading ---------------------
-  //---------------------------------------------------
-
-
   //--------------------- Leaflet map -----------------
-  var map = L.map('map',{zoomSnap: 0.3});
+  //Map1 (large screen)
+  var map1 = L.map('map',{zoomSnap: 0.3});
   
-  map.fitBounds([
+  map1.fitBounds([
       //[38.75, -9.38],[20, 13.15]
       [37.302414, -9.38],[18.81, 13.15]
   ]);
-  map.setMaxBounds(map.getBounds());
+  map1.setMaxBounds(map1.getBounds());
 
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     minZoom: 5,
     maxZoom: 8,
-  }).addTo(map);
-  //---------------------------------------------------
+  }).addTo(map1);
+  
+  //Map2 (medium & small screen)
+  var map2 = L.map('map2',{zoomSnap: 0.8});
+  map2.fitBounds([
+    //[38.75, -9.38],[20, 13.15]
+    [37.302414, -9.38],[18.81, 13.15]
+  ]);
+  map2.setMaxBounds(map2.getBounds());
 
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    minZoom: 4,
+    maxZoom: 6,
+  }).addTo(map2);
 
-  //--------------------- Init vars -----------------
+  //Init MyMaps
+  MyMaps = [map1,map2];
+  selected_map = MyMaps[mode_affichage];
+
+  //--------------------- Init vars -----------------      
   var geoJSON_Algeria;
   var geoJSON_wilayas = [];
   
   var comptearebours;
-  var spn_nbr_wilayas_trouves = document.getElementById("spn_nbr_wilayas_trouves");
+  var textviews_nbr_wilayas_trouves = [...document.getElementsByClassName("textview-nbr-wilayas-trouves")];
   var nbr_wilayas_trouves = 0;
   
   let game_time = 300; //5:00
   var remaining_time = game_time;
-  var spn_timer = document.getElementById("spn_timer");
+  var textviews_timer = [...document.getElementsByClassName("textview-timer")];
 
   
   //init geoJSON files
@@ -54,42 +69,55 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   //--------------------- Functions -----------------
   function initDomElements(){
-    h4_saisir_wilaya = document.getElementById("h4_saisir_wilaya");
-    input_wilayas = document.getElementById("input_wilayas");  
-    spn_liste_wilayas = document.getElementById("spn_liste_wilayas");
-    THs_tableau_wilayas = document.getElementsByClassName("th-wilaya");
+    textviews_saisir_wilaya = [...document.getElementsByClassName("textview-saisir-wilaya")];
+    inputs_wilayas = [...document.getElementsByClassName("input-wilayas")];  
+    btn_show_wilayas = [...document.getElementsByClassName("btn-show-wilayas")][0];
+    textviews_liste_wilayas = [...document.getElementsByClassName("textview-liste-wilayas")];
+    THs_tableau_wilayas = [...document.getElementsByClassName("th-wilaya")];
+    divs_replay = [...document.getElementsByClassName("div-replay")];
   }
 
   function initTranslation(lng){
     fetch('./assets/json/translations/'+lng+'.json')
     .then(response => response.text())
     .then((data) => {
-        var translationData = JSON.parse(data);
-        
-        titre_swal_chargement = translationData.titre_toast_chargement;
-        txt_swal_chargement = translationData.txt_toast_chargement;
+      var translationData = JSON.parse(data);
+      
+      titre_swal_chargement = translationData.titre_toast_chargement;
+      txt_swal_chargement = translationData.txt_toast_chargement;
 
-        titre_swal_accueil = translationData.titre_toast_accueil;
-        txt_swal_accueil = translationData.txt_toast_accueil;
-        btn_swal_accueil = translationData.btn_toast_accueil;
+      titre_swal_accueil = translationData.titre_toast_accueil;
+      txt_swal_accueil = translationData.txt_toast_accueil;
+      btn_swal_accueil = translationData.btn_toast_accueil;
 
-        h4_saisir_wilaya.innerHTML = translationData.txt_saisir_wilaya;
-        input_wilayas.placeholder = translationData.hint_input_wilaya;
-        spn_liste_wilayas.innerHTML = translationData.titre_liste_wilayas;
-        [...THs_tableau_wilayas].forEach(element => {
-          element.innerHTML = translationData.txt_tableau_wilayas;
-        });
-        
-        liste_wilayas_display = translationData.liste_wilayas_display;
-        liste_wilayas = translationData.liste_wilayas;
-        nbr_wilayas = liste_wilayas.length-1;
+      textviews_saisir_wilaya.forEach(element => {element.innerHTML = translationData.txt_saisir_wilaya;});
+      inputs_wilayas.forEach(element => {element.placeholder = translationData.hint_input_wilaya;});
+      btn_show_wilayas.innerHTML = "<i class='fa-solid fa-arrow-down'></i> "+translationData.btn_show_wilayas+" <i class='fa-solid fa-arrow-down'></i>";
+      
+      textviews_liste_wilayas.forEach(element => {element.innerHTML = translationData.titre_liste_wilayas;});
+      THs_tableau_wilayas.forEach(element => {element.innerHTML = translationData.txt_tableau_wilayas;});
+      
+      liste_wilayas_display = translationData.liste_wilayas_display;
+      liste_wilayas = translationData.liste_wilayas;
+      nbr_wilayas = liste_wilayas.length-1;
 
-        titre_swal_fin = translationData.titre_toast_fin;
-        score_swal_fin = translationData.score_toast_fin;
-        temps_swal_fin = translationData.temps_toast_fin;
-        btn_swal_fin = translationData.btn_toast_fin;
+      TDs_elements = [null];
+      TDs_elements2 = [null];
+      for (i=1; i<=nbr_wilayas; i++) {
+        TDs_elements.push(document.getElementById("td"+i));
+        TDs_elements2.push(document.getElementById("td"+i+"_2"));
+      }
+      MyTDs = [TDs_elements,TDs_elements2];
+      selected_TDs = MyTDs[mode_affichage];
 
-        startLoading();
+      titre_swal_fin = translationData.titre_toast_fin;
+      score_swal_fin = translationData.score_toast_fin;
+      temps_swal_fin = translationData.temps_toast_fin;
+      btn_swal_fin = translationData.btn_toast_fin;
+
+      txt_btn_replay = translationData.btn_replay;
+
+      startLoading();
     });
   }
 
@@ -136,7 +164,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
       "fillColor": "#ffffff",
       "fillOpacity": 0.1,
     };
-    var AlgeriaBorders = L.geoJSON(geoJSON_Algeria,{style: AlgeriaBordersStyle}).addTo(map);
+    
+    MyMaps.forEach(map => {
+      L.geoJSON(geoJSON_Algeria,{style: AlgeriaBordersStyle}).addTo(map);
+    });
   }
 
   function init_geoJSON_coordinates_wilayas(i=1){
@@ -153,27 +184,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function drawWilayaBorders(id_wilaya,nom_wilaya,unfound=false){
-    var WilayaBordersStyle = {"color": "#3388FF","weight": 1.2,};
+    WilayaBordersStyle = {"color": "#3388FF","weight": 1.2,};
     if(unfound) WilayaBordersStyle = {"color": "#a3342c","weight": 1.0,};
-    var wilayaBorders = L.geoJSON(geoJSON_wilayas[id_wilaya],{style: WilayaBordersStyle}).addTo(map);
-    
+      
+    var wilayaBorders = L.geoJSON(geoJSON_wilayas[id_wilaya],{style: WilayaBordersStyle}).addTo(selected_map);
+
     //Initialiser le popup à sa création (Afficher puis masquer), pour pouvoir l'activer on mouseover plus tard
     var wilayaPopup = L.popup({offset: [0, 0]}).setContent(nom_wilaya);
     wilayaBorders.bindPopup(wilayaPopup).openPopup();
-    map.closePopup()
+    selected_map.closePopup();
 
     //Popup events on map
-    wilayaBorders.on('mouseover', function(){map.openPopup(wilayaPopup)});
-    wilayaBorders.on('mouseout', function(){map.closePopup()});
+    wilayaBorders.on('mouseover', function(){selected_map.openPopup(wilayaPopup)});
+    wilayaBorders.on('mouseout', function(){selected_map.closePopup()});
 
     //Popup events on list
-    td_element = document.getElementById("td"+id_wilaya);          
-    td_element.onmouseover = function(){map.openPopup(wilayaPopup)};
-    td_element.onmouseout = function(){map.closePopup()};
+    td_element = selected_TDs[id_wilaya]; //document.getElementById("td"+id_wilaya);          
+    td_element.onmouseover = function(){selected_map.openPopup(wilayaPopup)};
+    td_element.onmouseout = function(){selected_map.closePopup()};
+  
   }
 
   function getReadyToStartGame(){
-    if(language=="ar") input_wilayas.style.textAlign = "right";
+    if(language=="ar") inputs_wilayas.forEach(element => {element.style.textAlign = "right";}); 
 
     //Display div_main
     document.getElementById('div_main').style.visibility = "visible";
@@ -196,14 +229,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function startGame(){
     //Init span nbr_wilayas_trouves 
-    spn_nbr_wilayas_trouves.innerHTML = nbr_wilayas_trouves+" / "+nbr_wilayas;
-  
+    textviews_nbr_wilayas_trouves.forEach(element => {element.innerHTML = nbr_wilayas_trouves+" / "+nbr_wilayas;});   
+
+    //Init span timer 
+    textviews_timer.forEach(element => {element.innerHTML = displayFormattedTime(remaining_time);});
+
     //Start timer
     comptearebours = setInterval(updateTimer, 1000);
     
     //Handle input_wilayas 
-    input_wilayas.focus(); //Set focus
-    input_wilayas.onkeyup = function() {checkEnteredValue(input_wilayas.value)}; //Add onkeyup listener
+    inputs_wilayas.forEach(element => {
+      element.onkeyup = function() {checkEnteredValue(element.value)}; //Add onkeyup listener
+    });
+    //Set focus
+    selected_input = inputs_wilayas[mode_affichage];
+    selected_input.focus();
   }
 
   function toLowerCaseWithoutAccents(text){
@@ -292,15 +332,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
           num_wilaya = liste_wilayas.indexOf(valueToCheck);
           nom_wilaya = liste_wilayas_display[num_wilaya];
 
-          td_element = document.getElementById("td"+num_wilaya);
+          td_element = selected_TDs[num_wilaya];
           td_element.classList.add("found-wilaya");
           td_element.innerHTML = nom_wilaya;
 
           liste_wilayas[num_wilaya] = "";
           drawWilayaBorders(num_wilaya,nom_wilaya);
           nbr_wilayas_trouves++;
-          spn_nbr_wilayas_trouves.innerHTML = nbr_wilayas_trouves+" / "+nbr_wilayas;
-          input_wilayas.value = "";
+          textviews_nbr_wilayas_trouves.forEach(element => {element.innerHTML = nbr_wilayas_trouves+" / "+nbr_wilayas;});
+          inputs_wilayas.forEach(element => {element.value = "";});
 
           if(nbr_wilayas_trouves==nbr_wilayas) endGame();
       }
@@ -316,18 +356,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function updateTimer() {
       remaining_time--;
-      spn_timer.innerHTML = displayFormattedTime(remaining_time);
+      textviews_timer.forEach(element => {element.innerHTML = displayFormattedTime(remaining_time);});
       if(remaining_time==0) endGame();
   }
 
   function endGame(){
     clearInterval(comptearebours);
-    input_wilayas.remove();
-    spn_timer.remove();
+    inputs_wilayas.forEach(element => {element.remove();});
+    textviews_timer.forEach(element => {element.remove();});
 
-    (language=="ar") ? txt_wilayas_trouvees = nbr_wilayas+"/"+nbr_wilayas_trouves : txt_wilayas_trouvees = nbr_wilayas_trouves+"/"+nbr_wilayas;
+    if(language=="ar"){
+      txt_wilayas_trouvees = nbr_wilayas+"/"+nbr_wilayas_trouves;
+      txt_btn_replay = "<a class='btn btn-success' href='game1.html?lng="+language+"' role='button'>"+txt_btn_replay+" <i class='fa-solid fa-rotate-right'></i></a>";
+    }
+    else{
+      txt_wilayas_trouvees = nbr_wilayas_trouves+"/"+nbr_wilayas;
+      txt_btn_replay = "<a class='btn btn-success' href='game1.html?lng="+language+"' role='button'><i class='fa-solid fa-rotate-right'></i> "+txt_btn_replay+"</a>";
+    }
+
     end_game_message = "&#x1F3AF "+score_swal_fin+txt_wilayas_trouvees;
-    if(remaining_time>0) {
+    if(remaining_time>0){
       time_spent = game_time - remaining_time;
       end_game_message += "<br><br>&#x231A "+temps_swal_fin+displayFormattedTime(time_spent);
     }
@@ -335,6 +383,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       showUnfoundWilayas();
     }
     
+    divs_replay.forEach(element => {element.innerHTML = txt_btn_replay;});
+
     Swal.fire({
       title: titre_swal_fin,
       html: end_game_message, 
@@ -343,13 +393,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function showUnfoundWilayas(){
-    console.log("showUnfoundWilayas",liste_wilayas);
     liste_wilayas.forEach((element, index) => {
       if (element !== "") {
         num_wilaya = index;
         nom_wilaya = liste_wilayas_display[num_wilaya];
         drawWilayaBorders(num_wilaya,nom_wilaya,true);
-        td_element = document.getElementById("td"+num_wilaya);
+
+        td_element = selected_TDs[num_wilaya];
         td_element.classList.add("unfound-wilaya");
         td_element.innerHTML = nom_wilaya;
       }

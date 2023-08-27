@@ -27,6 +27,15 @@ body {
     gap: 20px;
 }
 
+.card2 {
+    width: 20rem;
+    text-align: center;
+}
+
+.card2-body {
+    height:6.2rem;
+}
+
 .card-title {
     font-weight: bold;
 }

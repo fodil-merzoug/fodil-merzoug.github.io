@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DZ Map Games</title>
+    <title>DZ Map Games 1.6</title>
     <link rel="icon" type="image/x-icon" href="./assets/images/algeria_map_icon.png">
 
     <!--Bootstrap CSS-->
@@ -11,6 +11,9 @@
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
     crossorigin="anonymous">
 
+    <!-- FontAwesome CSS -->
+    <script src="https://kit.fontawesome.com/c605ea5a52.js" crossorigin="anonymous"></script>
+    
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
      integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
@@ -22,19 +25,20 @@
   <body>
     
     <div id="div_main">
-      <div class="row align-items-start">
+      <div id="div1" class="row align-items-start responsive-div">
         <div class="col-7">            
             <div id="map"></div>
         </div>
         <div class="col-5 right-column">
           <center>
-            <h4 id="h4_saisir_wilaya"></h4>
-            <span id="spn_timer"></span>
-            <input id="input_wilayas" type="text">
-            <span id="spn_nbr_wilayas_trouves"></span>
+            <div class="div-replay"></div>
+            <h4 class="textview-saisir-wilaya"></h4>
+            <span class="textview-timer"></span>
+            <input class="input-wilayas" type="text">
+            <span class="textview-nbr-wilayas-trouves"></span>
             <br><br>
           
-            <span id="spn_liste_wilayas"></span>
+            <span class="textview-liste-wilayas"></span>
           </center>
           <br>
           <table class="table">
@@ -200,6 +204,214 @@
                 <td id="td45"></td>
                 <td></td>
                 <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="div2" class="responsive-div">
+        <div>
+          <center>
+            <div class="div-replay"></div>
+            <h4 class="textview-saisir-wilaya"></h4>
+            <span class="textview-timer"></span>
+            <input class="input-wilayas" type="text">
+            <span class="textview-nbr-wilayas-trouves"></span>
+            <br>
+            <a class="btn btn-outline-secondary btn-show-wilayas" href="#spn_wilayas_trouvees_2" role="button"></a>
+            <br><br>
+          </center>
+        </div>
+        <div id="map2"></div>
+        <div>
+          <br><br>
+          <center>
+            <span id="spn_wilayas_trouvees_2" class="textview-liste-wilayas"></span>
+          </center>
+          <br>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" class="th-wilaya"></th>
+                <th scope="col">#</th>
+                <th scope="col" class="th-wilaya"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td id="td1_2"></td>
+                <th scope="row">2</th>
+                <td id="td2_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td id="td3_2"></td>
+                <th scope="row">4</th>
+                <td id="td4_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td id="td5_2"></td>
+                <th scope="row">6</th>
+                <td id="td6_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td id="td7_2"></td>
+                <th scope="row">8</th>
+                <td id="td8_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td id="td9_2"></td>
+                <th scope="row">10</th>
+                <td id="td10_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">11</th>
+                <td id="td11_2"></td>
+                <th scope="row">12</th>
+                <td id="td12_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">13</th>
+                <td id="td13_2"></td>
+                <th scope="row">14</th>
+                <td id="td14_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">15</th>
+                <td id="td15_2"></td>
+                <th scope="row">16</th>
+                <td id="td16_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">17</th>
+                <td id="td17_2"></td>
+                <th scope="row">18</th>
+                <td id="td18_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">19</th>
+                <td id="td19_2"></td>
+                <th scope="row">20</th>
+                <td id="td20_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">21</th>
+                <td id="td21_2"></td>
+                <th scope="row">22</th>
+                <td id="td22_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">23</th>
+                <td id="td23_2"></td>
+                <th scope="row">24</th>
+                <td id="td24_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">25</th>
+                <td id="td25_2"></td>
+                <th scope="row">26</th>
+                <td id="td26_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">27</th>
+                <td id="td27_2"></td>
+                <th scope="row">28</th>
+                <td id="td28_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">29</th>
+                <td id="td29_2"></td>
+                <th scope="row">30</th>
+                <td id="td30_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">31</th>
+                <td id="td31_2"></td>
+                <th scope="row">32</th>
+                <td id="td32_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">33</th>
+                <td id="td33_2"></td>
+                <th scope="row">34</th>
+                <td id="td34_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">35</th>
+                <td id="td35_2"></td>
+                <th scope="row">36</th>
+                <td id="td36_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">37</th>
+                <td id="td37_2"></td>
+                <th scope="row">38</th>
+                <td id="td38_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">39</th>
+                <td id="td39_2"></td>
+                <th scope="row">40</th>
+                <td id="td40_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">41</th>
+                <td id="td41_2"></td>
+                <th scope="row">42</th>
+                <td id="td42_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">43</th>
+                <td id="td43_2"></td>
+                <th scope="row">44</th>
+                <td id="td44_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">45</th>
+                <td id="td45_2"></td>
+                <th scope="row">46</th>
+                <td id="td46_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">47</th>
+                <td id="td47_2"></td>
+                <th scope="row">48</th>
+                <td id="td48_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">49</th>
+                <td id="td49_2"></td>
+                <th scope="row">50</th>
+                <td id="td50_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">51</th>
+                <td id="td51_2"></td>
+                <th scope="row">52</th>
+                <td id="td52_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">53</th>
+                <td id="td53_2"></td>
+                <th scope="row">54</th>
+                <td id="td54_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">55</th>
+                <td id="td55_2"></td>
+                <th scope="row">56</th>
+                <td id="td56_2"></td>
+              </tr>
+              <tr>
+                <th scope="row">57</th>
+                <td id="td57_2"></td>
+                <th scope="row">58</th>
+                <td id="td58_2"></td>
               </tr>
             </tbody>
           </table>
