@@ -6,7 +6,7 @@
     "btn_toast_accueil": "Start the game",
     "txt_saisir_province": "Enter the name of a province/territory",
     "hint_input_province": "Enter here ...",
-    "btn_show_provinces": "View list of provinces and territories found",
+    "btn_show_provinces": "View list of provinces and territories",
     "titre_liste_provinces": "Provinces/territories found",
     "txt_tableau_provinces": "Province/territory",
     "liste_provinces_display": ["","Alberta","British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador","Northwest Territories","Nova Scotia","Nunavut","Ontario","Prince Edward Island","Quebec","Saskatchewan","Yukon"],
