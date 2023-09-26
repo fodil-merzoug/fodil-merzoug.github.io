@@ -1,0 +1,19 @@
+{
+    "titre_toast_chargement": "Loading",
+    "txt_toast_chargement": "Please wait while the game is loading<br><b></b>",
+    "titre_toast_accueil": "New game",
+    "txt_toast_accueil": "There are 13 provinces and territories in Canada. Try to name as many as you can in 2 minutes !<br><br>&#x1F4A1; Every time the name of a province/territory is entered, its location appears on the map and it is added to the list.",
+    "btn_toast_accueil": "Start the game",
+    "txt_saisir_province": "Enter the name of a province/territory",
+    "hint_input_province": "Enter here ...",
+    "btn_show_provinces": "View list of provinces and territories found",
+    "titre_liste_provinces": "Provinces/territories found",
+    "txt_tableau_provinces": "Province/territory",
+    "liste_provinces_display": ["","Alberta","British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador","Northwest Territories","Nova Scotia","Nunavut","Ontario","Prince Edward Island","Quebec","Saskatchewan","Yukon"],
+    "liste_provinces": ["","alberta","british columbia","manitoba","new brunswick","newfoundland and labrador","northwest territories","nova scotia","nunavut","ontario","prince edward island","quebec","saskatchewan","yukon"],
+    "titre_toast_fin": "End of the game",
+    "score_toast_fin": "Your score = ",
+    "temps_toast_fin": "Your time = ",
+    "btn_toast_fin": "OK",
+    "btn_replay": "Replay"
+}

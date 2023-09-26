@@ -1,0 +1,83 @@
+/* Map style */
+#map { 
+    height: 700px;
+    width: 100%; 
+}
+
+#map2 { 
+    height: 570px;
+    width: 100%; 
+}
+
+/* Main div style */
+#div_main { 
+    margin:0.2em;
+    visibility: hidden;
+}
+
+.responsive-div{
+    display: none; /* Hide all items by default */
+}
+
+@media (min-width: 1024px) {
+    #div1{
+        display: flex;
+    }
+}
+
+@media (max-width: 1024px) {
+    #div2{
+        display: block;
+    }
+}
+
+/* Right column style */
+.right-column { 
+    font-size: 0.8em;
+}
+
+.table{
+    width: 85%;
+}
+
+th,td{
+    text-align: center;
+}
+
+/* Timer spinner style */
+.textview-timer{
+    color: #f23a07;
+    font-weight: bold;
+    font-size:130%;
+}
+
+/* provinces input style */
+.input-provinces{
+    width:200px;
+    margin-left:1em;
+    margin-right:1em;
+}
+
+.textview-liste-provinces{
+    font-weight: bold;
+}
+
+.div-replay .btn {
+    margin:1em;
+}
+
+.btn-show-provinces{
+    margin-top: 1rem;
+}
+
+/* Found province style */
+.found-province{
+    color:#5bb304;
+    font-weight:650;
+}
+
+/* Unfound province style */
+.unfound-province{
+    color:#a3342c;
+    font-weight:520;
+}

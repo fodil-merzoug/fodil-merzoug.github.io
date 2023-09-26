@@ -1,0 +1,19 @@
+{
+    "titre_toast_chargement": "Chargement",
+    "txt_toast_chargement": "Veuillez patienter pendant le Chargement du jeu<br><b></b>",
+    "titre_toast_accueil": "Nouvelle partie",
+    "txt_toast_accueil": "Il y a 13 provinces et territoire au Canada. Essayez d'en nommer le maximum en 2 minutes chrono !<br><br>&#x1F4A1; Les provinces et territoires trouvés apparaissent sur la carte et leurs noms sont affichés dans la liste.",
+    "btn_toast_accueil": "Commencer le jeu",
+    "txt_saisir_province": "Saisissez le nom d'une province/territoire",
+    "hint_input_province": "Saisir ici ...",
+    "btn_show_provinces": "Voir la liste des provinces trouvées",
+    "titre_liste_provinces": "provinces trouvées",
+    "txt_tableau_provinces": "province",
+    "liste_provinces_display": ["","Alberta","Colombie-Britannique","Manitoba","Nouveau-Brunswick","Terre-Neuve-et-Labrador","Territoires du Nord-Ouest","Nouvelle-Écosse","Nunavut","Ontario","Île-du-Prince-Édouard","Québec","Saskatchewan","Yukon"],
+    "liste_provinces": ["","alberta","colombie-britannique","manitoba","nouveau-brunswick","terre-neuve-et-labrador","territoires du nord-ouest","nouvelle-ecosse","nunavut","ontario","ile-du-prince-edouard","quebec","saskatchewan","yukon"],
+    "titre_toast_fin": "Partie terminée",
+    "score_toast_fin": "Votre score = ",
+    "temps_toast_fin": "Votre temps = ",
+    "btn_toast_fin": "OK",
+    "btn_replay": "Rejouer une nouvelle partie"
+}
