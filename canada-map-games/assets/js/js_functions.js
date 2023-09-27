@@ -176,6 +176,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     MyMaps.forEach(map => {
       L.geoJSON(geoJSON_country,{style: CountryBordersStyle}).addTo(map);
     });
+
+    //Manually Draw provinces borders (not visible with low zoom)
+    initialProvinceBordersStyle = {"fillColor": "#ffffff","color": "#888888","weight": 0.2};
+    for(var p=1;p<=geoJSON_provinces.length;p++)
+      L.geoJSON(geoJSON_provinces[p],{style: initialProvinceBordersStyle}).addTo(selected_map);
   }
 
   function init_geoJSON_coordinates_provinces(i=1){
