@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function drawCountryBorders(){
     var CountryBordersStyle = {
-      "color": "#5bb304",
+      //"color": "#5bb304",
       "weight": 1.2,
       "fillColor": "#ffffff",
       "fillOpacity": 0.1,
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function drawWilayaBorders(id_province,nom_province,unfound=false){
-    WilayaBordersStyle = {"color": "#5bb304","weight": 1.1,};
+    WilayaBordersStyle = {"color": "#3388FF","weight": 1.1,}; //WilayaBordersStyle = {"color": "#5bb304","weight": 1.1,};
     if(unfound) WilayaBordersStyle = {"color": "#a3342c","weight": 1.0,};
 
     //if(selected_index){
