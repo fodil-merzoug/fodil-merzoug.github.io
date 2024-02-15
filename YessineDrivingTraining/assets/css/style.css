@@ -1165,11 +1165,11 @@ section {
 
 .team .member .member-info {
   position: absolute;
-  bottom: -48px;
+  bottom: -75px;
   left: 20px;
   right: 20px;
   background: linear-gradient(360deg, rgb(92, 118, 141) 0%, rgba(92, 118, 141, 0.9) 35%, rgba(140, 167, 191, 0.8) 100%);
-  padding: 15px 0;
+  padding: 10px 0;
   border-radius: 4px;
 }
 
@@ -1199,6 +1199,14 @@ section {
   display: block;
   font-size: 13px;
   color: #fff;
+}
+
+.team .member .service-details {
+  font-style: italic;
+  display: block;
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 0px;
 }
 
 .team .member .social {
