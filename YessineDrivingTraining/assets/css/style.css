@@ -793,6 +793,11 @@ section {
   border-radius: 0;
 }
 
+.languages{
+  color: #ca4276;
+  font-size: 112%;
+}
+
 @keyframes pulsate-btn {
   0% {
     transform: scale(0.6, 0.6);
@@ -1147,7 +1152,7 @@ section {
 # Our Team
 --------------------------------------------------------------*/
 .team {
-  background: #fff;
+  /*background: #fff;*/
   padding: 60px 0 30px 0;
 }
 
